@@ -18,6 +18,13 @@ In our `hooks.server.ts` we can access the socket.io server through the global s
 
 NOTE: If you significantly change your socket.io server logic while using `npm run dev`, you may have to restart your vite server by re-running `npm run dev`.
 
+## Other tidbits I've included
+You will find that this is an example chat application. Of course, for this I have added a few things, such as:
+- tailwindcss
+- extra fonts in `static/fonts/`
+
+The main logic is entirely contained within the index route.
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
