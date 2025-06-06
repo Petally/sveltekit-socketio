@@ -83,19 +83,21 @@
     }
     
     function onkeypress(event: KeyboardEvent): void {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            // Prevent default to prevent newline from appearing after message is sent
+            event.preventDefault();
             sendMessage();
         }
     }
 </script>
 
-<div class="flex flex-col h-screen">
+<div class="flex flex-col h-screen font-pixel p-2">
     <h1>Socket.IO + Sveltekit Test</h1>
 
     <!-- Message list -->
     <div class="flex-1 overflow-y-scroll" bind:this={viewport}>
         {#each messages as message, i (i)}
-            <p class="break-all">
+            <p class="break-all whitespace-pre-line">
                 {#if message.isServer}
                     <span class="text-gray-500">{message.username}</span>
                 {:else}
@@ -115,12 +117,12 @@
 
     <!-- Input -->
     <div class="flex">
-        <input 
-            class="flex-1 border border-gray-400 px-2"
+        <textarea 
+            class="flex-1 border border-gray-400 px-2 resize-none"
             bind:value={messageInput} 
             placeholder="Type a message..." 
             {onkeypress}
-        />
+        ></textarea>
         <button 
             class="px-4 py-2 bg-blue-500 text-white cursor-pointer 
             disabled:bg-gray-300 disabled:cursor-not-allowed
@@ -135,6 +137,6 @@
 
 <style>
     :global(body) {
-        margin: 0 1rem 0 1rem;
+        margin: 0;
     }
 </style>
