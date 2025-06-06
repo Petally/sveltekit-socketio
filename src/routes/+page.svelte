@@ -91,11 +91,11 @@
     }
 </script>
 
-<div class="flex flex-col h-screen font-pixel p-2">
-    <h1>Socket.IO + Sveltekit Test</h1>
+<div class="flex flex-col h-screen font-pixel">
+    <h1 class="bg-orange-500 text-white px-2">Socket.IO + Sveltekit Test</h1>
 
     <!-- Message list -->
-    <div class="flex-1 overflow-y-scroll" bind:this={viewport}>
+    <div class="flex-1 overflow-y-scroll px-1" bind:this={viewport}>
         {#each messages as message, i (i)}
             <p class="break-all whitespace-pre-line">
                 {#if message.isServer}
@@ -109,16 +109,16 @@
     </div>
 
     <!-- Connected status -->
-    <div class="status">
+    <div class="px-2 border-t-1 border-gray-400">
         Status: <span class={[isConnected && 'text-green-500', !isConnected && 'text-red-500']}>
             {isConnected ? 'Connected' : 'Disconnected'}
         </span>
     </div>
 
     <!-- Input -->
-    <div class="flex">
+    <div class="flex mb-2 mx-2">
         <textarea 
-            class="flex-1 border border-gray-400 px-2 resize-none"
+            class="flex-1 border border-gray-400 px-2 resize-none focus:outline-none"
             bind:value={messageInput} 
             placeholder="Type a message..." 
             {onkeypress}
