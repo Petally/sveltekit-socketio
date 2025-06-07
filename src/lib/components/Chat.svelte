@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount, tick } from 'svelte';
-    import { io, type Socket } from 'socket.io-client';
+    import { type Socket } from 'socket.io-client';
+    import io from '$lib/client/socket';
     import type { ServerToClientEvents, ClientToServerEvents } from '../../app.d.ts';
 
     type ClientSocket = Socket<ServerToClientEvents, ClientToServerEvents>;
@@ -18,7 +19,7 @@
     let isConnected: boolean = $state(false);
 
     onMount(() => {
-        socket = io();
+        socket = io;
         
         socket.on('connect', () => {
             isConnected = true;

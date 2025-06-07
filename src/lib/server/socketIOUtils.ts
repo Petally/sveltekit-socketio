@@ -45,7 +45,7 @@ export function getSocketIOServer(): TypedServer | null {
 
 export function setupSocketIOHandlers(io: TypedServer): void {
     io.on('connection', (socket) => {
-        socket.data.username = 'Anonymous';
+        socket.data.username = socket.handshake.auth.username || 'Anonymous';
 
         io.emit('userJoined', socket.data.username);
 
