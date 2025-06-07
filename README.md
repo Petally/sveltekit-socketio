@@ -3,7 +3,7 @@ Here be dragons.
 
 I'm new to webdev, so I wanted to use socket.io with sveltekit. This is probably a really ugly way to do it, but it has the best developer experience out of any other method I've seen.
 
-This project is essentially (this implementation)[https://github.com/suhaildawood/SvelteKit-integrated-WebSocket] reworked to use the socket.io library instead of raw websockets.
+This project is essentially [this implementation](https://github.com/suhaildawood/SvelteKit-integrated-WebSocket)  reworked to use the socket.io library instead of raw websockets.
 
 If you see any bugs or glaring issues, please open a pull request. I'm a webdev noob right now.
 
