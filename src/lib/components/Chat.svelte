@@ -13,7 +13,6 @@
     let socket: ClientSocket;
 
     let messages: Message[] = $state([]);
-    let messageInput: string = $state('');
     let isConnected: boolean = $state(false);
 
     if (browser) {
