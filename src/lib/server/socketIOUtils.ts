@@ -14,16 +14,16 @@ type TypedServer = Server<
     SocketData
 >;
 
-const WEBSOCKET_SERVER_KEY = Symbol.for('sveltekit.websocket.server');
+const SOCKETIO_SERVER_KEY = Symbol.for('sveltekit.socketIO.server');
 
-interface GlobalWithWebSocket {
-    [WEBSOCKET_SERVER_KEY]?: TypedServer;
+interface GlobalWithSocketIO {
+    [SOCKETIO_SERVER_KEY]?: TypedServer;
 }
 
-export function createWebSocketServer(server: HTTPServer): TypedServer {
-    const globalWithWS = globalThis as GlobalWithWebSocket;
+export function createSocketIOServer(server: HTTPServer): TypedServer {
+    const globalWithSocketIO = globalThis as GlobalWithSocketIO;
     
-    if (!globalWithWS[WEBSOCKET_SERVER_KEY]) {
+    if (!globalWithSocketIO[SOCKETIO_SERVER_KEY]) {
         const io: TypedServer = new Server(server, {
             cors: {
                 origin: "http://localhost:5173", // Your dev server URL
@@ -31,18 +31,18 @@ export function createWebSocketServer(server: HTTPServer): TypedServer {
             }
         });
         
-        globalWithWS[WEBSOCKET_SERVER_KEY] = io;
+        globalWithSocketIO[SOCKETIO_SERVER_KEY] = io;
     }
     
-    return globalWithWS[WEBSOCKET_SERVER_KEY]!;
+    return globalWithSocketIO[SOCKETIO_SERVER_KEY]!;
 }
 
-export function getWebSocketServer(): TypedServer | null {
-    const globalWithWS = globalThis as GlobalWithWebSocket;
-    return globalWithWS[WEBSOCKET_SERVER_KEY] || null;
+export function getSocketIOServer(): TypedServer | null {
+    const globalWithSocketIO = globalThis as GlobalWithSocketIO;
+    return globalWithSocketIO[SOCKETIO_SERVER_KEY] || null;
 }
 
-export function setupWebSocketHandlers(io: TypedServer): void {
+export function setupSocketIOHandlers(io: TypedServer): void {
     io.on('connection', (socket) => {
         socket.data.username = 'Anonymous';
 

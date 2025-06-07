@@ -1,14 +1,14 @@
 import { handler } from './build/handler.js';
 import express from 'express';
 import { createServer } from 'http';
-import { createWebSocketServer, setupWebSocketHandlers } from './src/lib/server/webSocketUtils.js';
+import { createSocketIOServer, setupSocketIOHandlers } from './src/lib/server/socketIOUtils.js';
 
 const app = express();
 const server = createServer(app);
 
-// Set up WebSocket server with proper typing
-const io = createWebSocketServer(server);
-setupWebSocketHandlers(io);
+// Set up Socket.IO server with proper typing
+const io = createSocketIOServer(server);
+setupSocketIOHandlers(io);
 
 // SvelteKit handler
 app.use(handler);

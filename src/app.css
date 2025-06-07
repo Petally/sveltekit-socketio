@@ -10,7 +10,6 @@
   src: url("/font/WebPlus_IBM_VGA_8x16.woff") format("woff");
 }
 
-
 @theme {
   --font-pixel: "Compaq Thin 8x16", "IBM VGA 8x16", "monospace";
 }
