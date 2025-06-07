@@ -1,3 +1,4 @@
+// TODO: simplify some of this stuff. A lot of it is just not necessary.
 import { Server } from 'socket.io';
 import type { Server as HTTPServer } from 'http';
 import type { 
