@@ -13,3 +13,10 @@
 @theme {
     --font-pixel: "Compaq Thin 8x16", "IBM VGA 8x16", "monospace";
 }
+
+@layer base {
+    :root {
+        /* Disable subpixel anti-aliasing for pixel fonts */
+        filter: contrast(100.00001%);
+    }
+}
