@@ -23,8 +23,6 @@ You will find that this is an example chat application. Of course, for this I ha
 - tailwindcss
 - extra fonts in `static/fonts/`
 
-The main logic is entirely contained within the index route.
-
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
